@@ -1,0 +1,23 @@
+{
+  "name": "send-mail",
+  "version": "1.0.0",
+  "author": "@pixfy",
+  "scripts": {
+    "cz": "git-cz"
+  },
+  "config": {
+    "commitizen": {
+      "path": "cz-conventional-changelog"
+    }
+  },
+  "devDependencies": {
+    "cz-conventional-changelog": "^3.2.0"
+  },
+  "dependencies": {
+    "bluebird": "^3.7.2",
+    "nodemailer": "^6.4.8",
+    "winston": "^3.2.1",
+    "yup": "^0.29.1"
+  }
+}
+
