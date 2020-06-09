@@ -15,9 +15,9 @@
   },
   "dependencies": {
     "bluebird": "^3.7.2",
+    "micro-cors": "^0.1.1",
     "nodemailer": "^6.4.8",
     "winston": "^3.2.1",
     "yup": "^0.29.1"
   }
 }
-
