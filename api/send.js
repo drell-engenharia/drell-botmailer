@@ -3,7 +3,8 @@ import { sendMail, mailSchema } from '../mail'
 import { Logger } from '../infrastructure'
 import { validateSchema, handleSuccessResponse, handleErrorResponse } from '../common'
 
-export default (req, res) => {
+
+const allowCors = fn => async (req, res) => {
   res.setHeader('Access-Control-Allow-Credentials', true)
   res.setHeader('Access-Control-Allow-Origin', '*')
   res.setHeader('Access-Control-Allow-Methods', 'GET,OPTIONS')
@@ -11,6 +12,14 @@ export default (req, res) => {
     'Access-Control-Allow-Headers',
     'X-CSRF-Token, X-Requested-With, Accept, Accept-Version, Content-Length, Content-MD5, Content-Type, Date, X-Api-Version'
   )
+  if (req.method === 'OPTIONS') {
+    res.status(200).end()
+    return
+  }
+  return await fn(req, res)
+}
+
+const handler = (req, res) => {
   return Bluebird.resolve(req.body)
     .tap(validateSchema(mailSchema))
     .then(schema => sendMail(schema))
@@ -18,3 +27,4 @@ export default (req, res) => {
     .catch(handleErrorResponse(res, Logger))
 }
 
+export default allowCors(handler)
