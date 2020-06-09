@@ -4,12 +4,6 @@ import { Logger } from '../infrastructure'
 import { validateSchema, handleSuccessResponse, handleErrorResponse } from '../common'
 
 export default (req, res) => {
-  res.setHeader('Access-Control-Allow-Origin', '*')
-  res.setHeader(
-    'Access-Control-Allow-Headers',
-    'Origin, X-Requested-With, Content-Type, Accept'
-  )
-  
   return Bluebird.resolve(req.body)
     .tap(validateSchema(mailSchema))
     .then(schema => sendMail(schema))
