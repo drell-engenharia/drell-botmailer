@@ -3,12 +3,7 @@ import { credentials } from '../config'
 
 const transporter = nodemailer.createTransport(
   {
-    host: credentials.host,
-    secure: credentials.secure,
-    port: credentials.port,
-    tls: {
-      ciphers:'SSLv3'
-    },
+    service: 'outlook',
     auth: {
       user: credentials.user,
       pass: credentials.pass,
