@@ -15,7 +15,7 @@
   },
   "dependencies": {
     "bluebird": "^3.7.2",
-    "nodemailer": "^6.4.8",
+    "nodemailer": "^6.4.16",
     "winston": "^3.2.1",
     "yup": "^0.29.1"
   }
